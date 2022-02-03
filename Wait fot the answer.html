@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<b>Is this site complete?:</b> <span id="txtCompleto"></span>
+
+    <script>
+
+async function cargarUrl (url){
+    let respuesta = await fetch (url);
+    return respuesta.json();
+}
+
+
+
+async function cargarJson (){
+    let json = await cargarUrl ('https://jsonplaceholder.typicode.com/todos/1')
+let spanCompleto = document.getElementById ("txtCompleto");
+
+if (json.completed){ 
+spanCompleto.innerText = "Is complete";
+} else {
+    spanCompleto.innerText = "Is incomplete";
+}
+
+  console.log(json);
+} 
+
+cargarJson();
+    </script>
+    
+</body>
+</html>
